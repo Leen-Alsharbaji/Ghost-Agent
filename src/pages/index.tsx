@@ -1,41 +1,40 @@
-import Image from "next/image";
-import { Geist, Geist_Mono } from "next/font/google";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+import React from "react"; 
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+
+const clients = ["Client 1", "Client 2", "Client 3"];
+
+
+
 
 export default function Home() {
+  const [input, setInput] = React.useState<string>("");
+  const [messages, setMessages] = React.useState<string[]>([]);
+
   return (
     <>
-    <div className="grid  sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-4 gap-5 min-h-screen">
+    <div className="grid  sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-4 gap-2 min-h-screen">
 
 
 
-        <div className=" bg-[rgba(148,162,164,0.10)] rounded-lg text-center col-span-1 m-2"> 
-          <div className="p-1 text-center text-4xl h-10  bg-green-700 rounded-xl">Clients</div>
-          <div className="w-full h-30  bg-[rgba(118,154,159,0.2)] border-1 rounded-xl p-2 mt-2 mb-2 text-lg">Client 1</div>
-           <div className="w-full h-30  bg-[rgba(118,154,159,0.2)] border-1 rounded-xl p-2  mt-2 mb-2 text-lg">Client 2</div>
+        <div className=" h-screen backdrop-blur-lg bg-[rgba(30,41,59,0.8)] rounded-lg text-center col-span-1 "> 
+          <div className="p-1 text-center text-4xl h-10 mb-10 m-4 rounded-xl">Clients</div>
+          <div >{clients.map(c => <div className="w-80 h-25  bg-[rgba(118,154,159,0.2)] border-1 rounded-xl p-2 m-4 text-lg content-center" key={c}>{c}</div>)}</div>
         </div>
 
-                <div className=" bg-[rgba(148,162,164,0.10)] rounded-lg relative col-span-3">
-          <div className="p-1 text-center text-4xl h-10 bg-blue-900 rounded-xl">chat</div>
-          <div className="w-80 h-30 absolute bottom-[50px] bg-blue-900 rounded-xl p-7 text-center mb-5 text-justify">Sure!, how may I help?</div>
-          <div className="w-80 h-30  bottom-[200px] right-0 bg-gray-900 rounded-xl p-2 text-center absolute">Hello, I need assistance</div>
-          <div className="w-full h-[40px] text-center   bottom-0  absolute mb-2 ml-1">
-          <input className="w-3/4 h-full bg-[rgba(148,162,164,0.10)] focus:outline-none" placeholder="Type a message..."/>
-          <button className="w-1/4 h-full bg-blue-900 rounded-r-xl hover:bg-blue-700">Send</button>
+                <div className=" h-screen rounded-lg relative col-span-3 bg-[rgba(255,255,255,0.05)]">
+          <div className="p-5 text-center text-6xl h-10  rounded-xl mt-10">chat</div>
+         
+
+          <input className=" absolute w-270 h-12 bg-[rgba(148,162,164,0.10)] focus:outline-none bottom-0 mb-2 rounded-2xl ml-2" value={input} onChange={(e) => setInput(e.target.value)} placeholder=" Type a message..."/>
+          <button className=" absolute w-20 h-12 bg-[rgba(3,12,47,0.92)] rounded-r-xl hover:bg-blue-700 bottom-0 right-0 mb-2" onClick={() => {
+            setMessages([...messages, input]);
+            setInput("");
+          }}>Send</button>
           </div>
         </div>
 
-        
-    </div>
+ 
     </>
   );
 }

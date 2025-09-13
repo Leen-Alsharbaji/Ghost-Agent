@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
---background: linear-gradient(#0f2027, #1e3c72, #2a5298);
+--background: linear-gradient(135deg, #1e3c72, #2a5298);
 
   --foreground: #171717;
 }
@@ -15,7 +15,9 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: linear-gradient(#0f2027, #1e3c72, #2a5298);
+  --background: linear-gradient(135deg,#0D2C52,#194986);
+
+  
 
     --foreground: #ededed;
   }
