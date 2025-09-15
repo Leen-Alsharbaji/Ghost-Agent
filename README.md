@@ -1,49 +1,47 @@
-Project Overview
-This project is a full-stack AI-powered chat assistant called Ghost Agent. It allows users to interact with a chat interface, where their messages are processed by a backend that leverages advanced embedding and retrieval techniques to generate intelligent responses.
+# Ghost Agent 🤖
 
-Tech Stack
-Frontend:
+A full-stack, AI-powered chat assistant that leverages advanced embedding and retrieval techniques to generate intelligent, context-aware responses. Built with a modern Next.js frontend and a high-performance FastAPI backend.
 
-Next.js (React framework): For building the user interface and handling routing.
-Tailwind CSS: For modern, responsive, and utility-first styling.
-TypeScript: For type safety and better developer experience.
-Backend:
+![Ghost Agent Interface](https://github.com/user-attachments/assets/ad91f439-43e5-46ec-9c3c-77177361899a)
 
-FastAPI (Python): A high-performance web framework for building RESTful APIs.
-ChromaDB: Used for storing and querying document embeddings.
-Google Gemini API: For generating embeddings and AI-powered content.
-Python-dotenv: For managing environment variables securely.
-Other Tools:
+## ✨ Features
 
-CORS Middleware: To allow communication between the frontend (Next.js) and backend (FastAPI) during development.
-Uvicorn: ASGI server for running FastAPI.
-How It Works
-Frontend (Next.js):
+- **AI-Powered Conversations**: Utilizes Google's Gemini API for intelligent response generation.
+- **Context-Aware Responses**: Employs vector embedding retrieval (RAG) via ChromaDB to provide relevant answers.
+- **Modern & Responsive UI**: Built with Next.js and Tailwind CSS for a seamless experience on any device.
+- **Type Safety**: Full TypeScript integration on the frontend for robust development.
+- **Modular Backend**: A scalable and well-structured FastAPI server with clear separation of concerns.
+- **Secure API Communication**: Configured with CORS and environment variables for safe frontend-backend interaction.
 
-Users type messages into a chat interface.
-When a message is sent, it is POSTed to the FastAPI backend.
-Backend (FastAPI + Python):
+## 🛠️ Tech Stack
 
-Receives the chat message via an API endpoint.
-Uses the Gemini API to generate embeddings for the message.
-Stores and queries document embeddings using ChromaDB to find relevant context.
-Constructs a prompt and uses Gemini to generate a conversational, context-aware response.
-Sends the response back to the frontend.
-Frontend:
+### Frontend
+- **Next.js** (React framework) - UI and routing
+- **Tailwind CSS** - Styling
+- **TypeScript** - Type safety
 
-Displays the AI-generated response in the chat interface.
-Project Structure
-src/pages/index.tsx: Main chat UI (Next.js/React).
-embedding.py: Embedding and AI logic (Python).
-server.py: FastAPI server exposing the chat API.
-public/ and src/styles/: Static assets and global styles (Tailwind CSS).
-next.config.ts: Next.js configuration, including allowed development origins.
-Key Features
-Real-time chat interface.
-AI-powered, context-aware responses.
-Modern, responsive UI.
-Modular backend with scalable embedding and retrieval logic.
-Secure API communication between frontend and backend.
-Let me know if you want this tailored for a README, a blog post, or a specific platform!
+### Backend
+- **FastAPI** (Python) - RESTful API server
+- **ChromaDB** - Vector store for document embeddings
+- **Google Gemini API** - For generating embeddings and AI content
+- **Python-dotenv** - Environment variable management
+- **Uvicorn** - ASGI server
 
-GPT-4.1 • 1x
+## 🚀 How It Works
+
+### Frontend (Next.js)
+1. The user interacts with a chat interface built in React.
+2. Upon sending a message, the frontend sends a `POST` request to the `/chat` endpoint on the FastAPI backend.
+
+### Backend (FastAPI + Python)
+1. The backend receives the user's message.
+2. It generates an embedding for the message using the Gemini API.
+3. This embedding is used to query a ChromaDB collection to find the most relevant context from stored documents.
+4. A prompt is constructed combining the user's query and the retrieved context.
+5. The prompt is sent to the Gemini API to generate a final, conversational response.
+6. The generated response is sent back to the frontend.
+
+### Frontend
+1. The response is received and displayed in the chat interface for the user.
+
+
